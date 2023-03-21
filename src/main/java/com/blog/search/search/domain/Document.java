@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
-import java.time.ZonedDateTime;
-
 @Getter
 @AllArgsConstructor
 @Builder
@@ -17,5 +15,4 @@ public class Document {
     private String thumbnail;
     private String blogName;
     private String url;
-    private ZonedDateTime dateTime;
 }

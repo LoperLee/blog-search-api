@@ -3,7 +3,7 @@ package com.blog.search.search.provider.kakao;
 import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;
 
-public class KakaoFeginConfig {
+public class KakaoFeignConfig {
     @Bean
     public RequestInterceptor requestInterceptor() {
         return requestTemplate -> {

@@ -4,8 +4,6 @@ import com.blog.search.core.Translatable;
 import com.blog.search.search.domain.Document;
 import lombok.*;
 
-import java.time.ZonedDateTime;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -17,7 +15,7 @@ public class KakaoBlogDocument implements Translatable<Document> {
     private String url;
     private String blogname;
     private String thumbnail;
-    private ZonedDateTime datetime;
+    private String datetime;
 
     @Override
     public Document transObject() {
@@ -27,7 +25,6 @@ public class KakaoBlogDocument implements Translatable<Document> {
                 .contents(contents)
                 .url(url)
                 .thumbnail(thumbnail)
-                .dateTime(datetime)
                 .build();
     }
 }

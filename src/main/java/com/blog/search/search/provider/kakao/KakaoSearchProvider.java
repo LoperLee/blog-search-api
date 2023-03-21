@@ -10,11 +10,12 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class KakaoSearchProvider implements SearchProvider {
+    private static final SearchType PROVIDE_TYPE = SearchType.KAKAO;
     private final KakaoApiClient kakaoApiClient;
 
     @Override
     public boolean support(SearchType searchType) {
-        return SearchType.KAKAO.equals(searchType);
+        return PROVIDE_TYPE.equals(searchType);
     }
 
     @Override
@@ -24,7 +25,7 @@ public class KakaoSearchProvider implements SearchProvider {
                         request.getQuery(),
                         request.getPage(),
                         request.getSize(),
-                        request.getSort()
+                        getSortString(PROVIDE_TYPE, request.getSort())
                 )
                 .transObject();
     }

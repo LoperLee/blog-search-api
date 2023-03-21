@@ -12,4 +12,6 @@ public class SearchRequest {
     private Integer page;
     private Integer size;
     private String sort;
+
+
 }

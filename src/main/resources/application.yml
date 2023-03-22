@@ -4,7 +4,7 @@ spring:
       enabled: true
 
   datasource:
-    url: jdbc:h2:mem:history
+    url: jdbc:h2:mem:testdb
     driver-class-name: org.h2.Driver
     username: sa
     password:
@@ -21,5 +21,5 @@ spring:
 
 logging:
   level:
-    org.hibernate.SQL: debug
-    org.hibernate.type: trace
+    org.hibernate.SQL: info
+    org.hibernate.type: info

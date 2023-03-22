@@ -25,18 +25,17 @@ import java.util.stream.Collectors;
 public class GlobalAdviceController {
     @ExceptionHandler
     public ResponseEntity<ErrorResponse> exceptionHandler(Exception e, HttpServletRequest request) {
-        e.printStackTrace();
         return StandardMessage.createStandardErrorMessage(Error.INTERNAL_SERVER_ERROR, request.getRequestURI());
     }
 
     @ExceptionHandler(DataSourceException.class)
     public ResponseEntity<ErrorResponse> dataSourceException(DataSourceException e, HttpServletRequest request) {
-        return StandardMessage.createStandardErrorMessage(Error.PROVIDER_NOT_FOUND, request.getRequestURI());
+        return StandardMessage.createStandardErrorMessage(Error.PROVIDER_NOT_FOUND, request.getRequestURI(), e.getMessage());
     }
 
     @ExceptionHandler(NotSupportProviderException.class)
     public ResponseEntity<ErrorResponse> notSupportProviderHandler(NotSupportProviderException e, HttpServletRequest request) {
-        return StandardMessage.createStandardErrorMessage(Error.PROVIDER_NOT_FOUND, request.getRequestURI());
+        return StandardMessage.createStandardErrorMessage(Error.PROVIDER_NOT_FOUND, request.getRequestURI(), e.getMessage());
     }
 
     @ExceptionHandler({BindException.class, MethodArgumentNotValidException.class})

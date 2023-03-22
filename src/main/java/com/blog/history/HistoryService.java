@@ -22,17 +22,18 @@ public class HistoryService {
     @Async
     @Transactional
     public void publishHistory(SearchRequest request) {
-        HistoryEntity entity = historyRepository.findByKeyword(request.getQuery())
+        HistoryEntity history = historyRepository.findByKeyword(request.getQuery())
                 .orElseGet(() ->
                         HistoryEntity.builder()
                                 .keyword(request.getQuery())
                                 .count(0L)
                                 .build()
                 );
-        entity.increaseCount(1);
-        historyRepository.save(entity);
+        history.increaseCount(1);
+        historyRepository.save(history);
     }
 
+    @Transactional(readOnly = true)
     public List<History> getHistorys() {
         return historyRepository.findTopHistory().stream()
                 .map(HistoryEntity::transObject)

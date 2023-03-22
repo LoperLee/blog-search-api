@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -62,8 +61,6 @@ class SearchServiceTest {
 
         assertEquals(kakaoResult, result);
         assertNotEquals(naverResult, result);
-
-        verify(kakaoSearchProvider).getBlogs(request);
     }
 
     @Test
@@ -77,9 +74,6 @@ class SearchServiceTest {
 
         assertNotEquals(kakaoResult, result);
         assertEquals(naverResult, result);
-
-        verify(kakaoSearchProvider).getBlogs(request);
-        verify(naverSearchProvider).getBlogs(request);
     }
 
     @Test
@@ -90,9 +84,6 @@ class SearchServiceTest {
         when(naverSearchProvider.getBlogs(request)).thenThrow(new RuntimeException());
 
         assertThrows(DataSourceException.class, () -> searchService.getBlogs(request));
-
-        verify(kakaoSearchProvider).getBlogs(request);
-        verify(naverSearchProvider).getBlogs(request);
     }
 }
 

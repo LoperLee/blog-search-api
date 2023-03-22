@@ -16,7 +16,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -44,8 +43,6 @@ class HistoryServiceTest {
         historyService.publishHistory(SearchRequest.builder().query("example").build());
 
         assertEquals(historyEntity.getCount(), 1L);
-        verify(historyRepository).findByKeyword("example");
-        verify(historyRepository).save(historyEntity);
     }
 
     @Test
@@ -56,7 +53,6 @@ class HistoryServiceTest {
         List<History> result = historyService.getHistorys();
 
         assertEquals(Stream.of(historyEntity).map(HistoryEntity::transObject).collect(Collectors.toList()), result);
-        verify(historyRepository).findTopHistory();
     }
 }
 

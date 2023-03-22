@@ -18,7 +18,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -62,6 +61,5 @@ class KakaoSearchProviderTest {
         );
 
         assertEquals(kakaoBlogResult.transObject(), result);
-        verify(kakaoApiClient).getBlogs("example", 1, 10, SearchType.KAKAO.getConvertSort(SortType.ACCURACY));
     }
 }

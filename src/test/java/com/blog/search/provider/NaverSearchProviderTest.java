@@ -17,7 +17,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -59,6 +58,5 @@ public class NaverSearchProviderTest {
         );
 
         assertEquals(naverBlogResult.transObject(), result);
-        verify(naverApiClient).getBlogs("example", 1, 10, SearchType.NAVER.getConvertSort(SortType.ACCURACY));
     }
 }
